@@ -35,7 +35,7 @@ body {
 body.light {
   --primary: #ff923e;
   --secondary: #e6e6e6;
-  --bg: #efefef;
+  --bg: #ffffff;
   --text: #121316;
   --text-dim: rgba(18, 19, 22, 0.7);
   --gray: #525252;
@@ -321,7 +321,7 @@ input:-webkit-autofill:active {
 }
 .wrapper {
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   padding: 15px;
 }
 

@@ -1,11 +1,5 @@
-import Image from "next/image";
-import styles from "@/styles/Main.module.scss";
+import HomePage from "@/components/Pages/Home";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <h1>Get Free Recipes</h1>
-      <h2>Coming Soon..</h2>
-    </main>
-  );
+  return <HomePage />;
 }

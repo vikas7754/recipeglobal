@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  > div {
+    width: 100%;
+  }
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  h1 {
+    font-family: "Allerta Stencil", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text);
+    text-shadow: 3px 3px 5px var(--border-color), -3px -3px 5px var(--text-dim);
+  }
+  p {
+    color: var(--text-dim);
+  }
+}
+.btns {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > div {
+      max-width: 500px;
+    }
+  }
+}
