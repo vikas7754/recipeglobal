@@ -15,7 +15,7 @@
     font-weight: 700;
     text-transform: uppercase;
     color: var(--text);
-    text-shadow: 3px 3px 5px var(--border-color), -3px -3px 5px var(--text-dim);
+    text-shadow: 3px 3px 5px var(--bg), -3px -3px 5px rgba(0, 0, 0, 0.6);
   }
   p {
     color: var(--text-dim);

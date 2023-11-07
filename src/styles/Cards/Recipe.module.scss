@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Playfair+Display+SC&display=swap");
+.container {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-size: cover;
+  backdrop-filter: blur(1rem);
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    border: 1px solid var(--blue);
+  }
+}
+.top {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.img {
+  width: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  border: 1px solid var(--text-dim);
+  border-radius: 10px;
+  object-fit: cover;
+}
+.title {
+  color: var(--text);
+  font-family: Playfair Display;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 0 0 5px 0;
+  text-shadow: 1px 0 1px #000;
+  mix-blend-mode: hard-light;
+  line-height: 24px;
+}
+.description {
+  color: var(--text-dim);
+  padding-bottom: 10px;
+  min-height: 100px;
+  img {
+    float: left;
+    margin-right: 7px;
+    border-radius: 10px;
+  }
+}
+.tags {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  a {
+    padding: 4px 7px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 16px;
+    text-transform: capitalize;
+    &:hover {
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      &:first-child {
+        color: rgb(255, 58, 58);
+        border: 1px solid rgb(255, 58, 58);
+      }
+    }
+    i {
+      color: red;
+    }
+  }
+  .veg {
+    i {
+      color: var(--green);
+    }
+    &:hover:first-child {
+      color: var(--green);
+      border: 1px solid var(--green);
+    }
+  }
+}
+.btn {
+  button,
+  a {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    background: var(--primary);
+    color: #fff;
+    box-shadow: inset 0 0 2px var(--text-dim), 0 0 2px var(--bg);
+    &:hover {
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      background: var(--bg);
+      svg {
+        transform: translateX(5px);
+      }
+    }
+    svg {
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: var(--text-dim);
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--text-dim);
+  }
+  a {
+    text-decoration: none;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

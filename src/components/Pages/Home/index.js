@@ -6,6 +6,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainContainer from "@/components/Pages/Home/MainContainer";
 import Layout from "@/components/Layout";
+import Recipes from "./Recipes";
 
 function HomePage() {
   const { isDark, toggleTheme } = useTheme();
@@ -15,12 +16,10 @@ function HomePage() {
     <Layout>
       <div className={styles.container}>
         <MainContainer />
-        <div>
-          <h1>Hello</h1>
-          <button onClick={toggleTheme}>
-            Toggle Theme <FontAwesomeIcon icon={faTrash} />
-          </button>
-        </div>
+        <h3 className="title">
+          Amazing <span className="gradient">Recipes</span>
+        </h3>
+        <Recipes />
       </div>
     </Layout>
   );
