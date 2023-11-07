@@ -3,21 +3,22 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 const URL = process.env.NEXT_PUBLIC_API_URL + "/user";
 const URL2 = process.env.NEXT_PUBLIC_API_URL + "/notification";
+const URL3 = process.env.NEXT_PUBLIC_API_URL + "/recipe";
 
 export const login = (data) => {
-  return axios.post(URL + "/login", data);
+  return axios.post(URL3 + "/login", data);
 };
 
 export const logout = () => {
-  return axios.get(URL + "/logout");
+  return axios.get(URL3 + "/logout");
 };
 
 export const sendOtpForSignup = (data) => {
-  return axios.post(URL + "/send-otp", data);
+  return axios.post(URL3 + "/send-otp", data);
 };
 
 export const signup = (data) => {
-  return axios.post(URL + "/signup", data);
+  return axios.post(URL3 + "/signup", data);
 };
 
 export const forgotPasswordRequest = (email) => {
@@ -53,7 +54,7 @@ export const updateUserSocialLinks = (data) => {
 };
 
 export const googleLogin = (data) => {
-  return axios.post(URL + "/google-login", data);
+  return axios.post(URL3 + "/google-login", data);
 };
 
 export const sendNotification = (data) => {
