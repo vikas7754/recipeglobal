@@ -1,0 +1,90 @@
+.container {
+  width: 100%;
+  background: var(--bg);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 0 8px var(--border-color);
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .forgotPassword {
+      width: 100%;
+      text-align: right;
+      a {
+        color: #308dff;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .input {
+      width: 100%;
+      position: relative;
+      .icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: #004eb4;
+      }
+      .eye {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: var(--text);
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        padding-left: 30px;
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 1.2rem;
+        outline: none;
+        background: transparent;
+        border-radius: 10px;
+        color: var(--text);
+        &:focus {
+          border: 2px solid #308dff;
+        }
+      }
+    }
+    .submit {
+      width: 100%;
+      > svg {
+        margin-left: 10px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        outline: none;
+        background: #308dff;
+        color: #fff;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 700;
+        &:hover {
+          background: #004eb4;
+        }
+      }
+    }
+  }
+}
+.or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  color: var(--text);
+}

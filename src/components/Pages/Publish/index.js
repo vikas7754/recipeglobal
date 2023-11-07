@@ -21,6 +21,7 @@ function PublishRecipe() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("veg");
+  const [video, setVideo] = useState("");
 
   const handleIngredients = (values) => {
     setIngredients(values);
@@ -101,6 +102,21 @@ function PublishRecipe() {
       return;
     }
 
+    let videoId = "";
+    if (video) {
+      const match =
+        /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/.exec(
+          video
+        );
+      const id = match ? (match?.[2].length === 11 ? match[2] : null) : null;
+      if (id != null) {
+        videoId = id;
+      } else {
+        toast.error("Invalid youtube video url!");
+        return;
+      }
+    }
+
     const payload = {
       title,
       description,
@@ -108,7 +124,9 @@ function PublishRecipe() {
       ingredients,
       instructions,
       images: imgUrls,
+      video: videoId || "",
     };
+
     try {
     } catch (err) {
       console.log(err);
@@ -265,6 +283,15 @@ function PublishRecipe() {
                 multiple
                 accept="image/*"
                 onChange={handleImages}
+              />
+            </div>
+            <div className={styles.video}>
+              <label htmlFor="video">Youtube Video (optional)</label>
+              <input
+                type="text"
+                value={video}
+                placeholder="Youtube video url"
+                onChange={(e) => setVideo(e.target.value)}
               />
             </div>
             <div className={styles.btns}>

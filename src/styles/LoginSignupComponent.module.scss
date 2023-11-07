@@ -1,0 +1,97 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  min-height: 450px;
+  gap: 20px;
+  background: var(--secondary);
+  padding: 40px 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  > div {
+    width: 100%;
+  }
+}
+.userCard {
+  width: 100%;
+}
+.form_container {
+  width: 100%;
+}
+.leftPanel {
+  > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+.account_check {
+  color: var(--text);
+  p {
+    padding: 15px 5px;
+  }
+  button {
+    color: #004eb4;
+    padding: 9px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: 2px solid #004eb4;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: transparent;
+    &:hover {
+      background: #004eb4;
+      color: #fff;
+    }
+  }
+}
+.close_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: red;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 0 0 0 10px;
+}
+.middle {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+  }
+}
+.title {
+  text-align: center;
+}
+@media screen and (max-width: 950px) {
+  .wrapper {
+    flex-direction: column-reverse;
+    max-width: 450px;
+  }
+  .title,
+  .middle {
+    display: none;
+  }
+}
