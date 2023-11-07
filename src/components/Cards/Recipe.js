@@ -56,7 +56,7 @@ function Recipe({ data }) {
         isRated={data.isRated}
       />
       <div className={styles.btn}>
-        <Link href={`/recipe/xyz`}>
+        <Link href={`/recipe/${data.title.replace(/ /g, "-")}-${data.slug}`}>
           <span>View Recipe</span>
           <i>
             <FontAwesomeIcon icon={faAnglesRight} />

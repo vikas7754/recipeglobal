@@ -2,6 +2,8 @@
 import DynamicInput from "@/components/Inputs/DynamicInput";
 import Input from "@/components/Inputs/Input";
 import Layout from "@/components/Layout";
+import useUser from "@/redux/hooks/useUser";
+import { addRecipe, uploadImages } from "@/services/recipe";
 import styles from "@/styles/pages/Publish.module.scss";
 import {
   faCircle,
@@ -9,10 +11,11 @@ import {
   faCloudUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef, useState } from "react";
+import { use, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 function PublishRecipe() {
+  const { isLoggedIn, user } = useUser();
   const imgRef = useRef(null);
   const [active, setActive] = useState(0);
   const [ingredients, setIngredients] = useState([]);
@@ -22,6 +25,7 @@ function PublishRecipe() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("veg");
   const [video, setVideo] = useState("");
+  const [tags, setTags] = useState("");
 
   const handleIngredients = (values) => {
     setIngredients(values);
@@ -58,7 +62,12 @@ function PublishRecipe() {
       toast.error("Please add atleast one instruction");
       return;
     }
-    if (active === 2 && (!title.trim() || !description.trim())) {
+    if (
+      active === 2 &&
+      (!title.trim() || !description.trim() || !tags.trim())
+    ) {
+      const tagsArr = tags.split(",").map((tag) => tag.trim());
+      if (tagsArr.length < 2) return toast.error("Please add atleast two tags");
       toast.error("Title and description are required");
       return;
     }
@@ -70,8 +79,9 @@ function PublishRecipe() {
     setActive((prev) => prev - 1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isLoggedIn) return toast.error("Please login to publish recipe");
     if (images.length === 0) {
       toast.error("Please select atleast one image");
       return;
@@ -90,11 +100,20 @@ function PublishRecipe() {
       return;
     }
     const formData = new FormData();
-    formData.append("images", images);
+    for (let i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
     const imgUrls = [];
     try {
+      const res = await uploadImages(formData);
+      if (res?.data?.images) {
+        res.data.images.forEach((img) => {
+          imgUrls.push(img);
+        });
+      }
     } catch (err) {
-      console.log(err);
+      toast.error(err?.response?.data?.message || err?.message);
+      return;
     }
 
     if (imgUrls.length === 0) {
@@ -125,18 +144,34 @@ function PublishRecipe() {
       instructions,
       images: imgUrls,
       video: videoId || "",
+      tags: tags.split(",").map((tag) => tag.trim()),
     };
 
     try {
+      const res = await addRecipe(payload);
+      toast.success(res?.data?.message);
+      setTitle("");
+      setDescription("");
+      setCategory("veg");
+      setIngredients([]);
+      setInstructions([]);
+      setImages([]);
+      setVideo("");
+      setActive(0);
     } catch (err) {
-      console.log(err);
+      toast.error(err?.response?.data?.message || err?.message);
     }
   };
   return (
     <Layout>
       <div className={styles.container}>
         <div></div>
-        <form action="" onSubmit={() => {}} className="scroll">
+        <form
+          action=""
+          onSubmit={() => {}}
+          className="scroll"
+          encType="multipart/form-data"
+        >
           <fieldset className={active === 0 ? styles.active : ""}>
             <h4>
               <span className="gradient">Ingredients</span>
@@ -174,6 +209,13 @@ function PublishRecipe() {
               placeholder="Title of the recipe"
               onChange={setTitle}
               id={"title"}
+            />
+            <Input
+              id={"tags"}
+              type="text"
+              value={tags}
+              placeholder="Tags: eg. tomato, potato, etc"
+              onChange={setTags}
             />
             <div className={styles.category}>
               <div className={styles.category_label}>
