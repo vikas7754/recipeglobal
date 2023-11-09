@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainContainer from "@/components/Pages/Home/MainContainer";
 import Layout from "@/components/Layout";
 import Recipes from "./Recipes";
+import { useEffect } from "react";
 
 function HomePage() {
   const { isDark, toggleTheme } = useTheme();

@@ -43,17 +43,14 @@ function UserDetails() {
               className="btn"
               onClick={() => setToggle(!toggle)}
             >
-              <img
-                src="https://res.cloudinary.com/freecodez/image/upload/v1698067298/images/fy8azbqxhgdrbbijhipe.webp"
-                alt="user"
-                width="100%"
-              />
+              <img src={user.image} alt={user.username} width="100%" />
             </button>
             {toggle && (
               <div ref={detailsRef} className={styles.details}>
                 <Link href={`/u/${user.username}`}>View Profile</Link>
-                <Link href={`/u/${user.username}`}>John Doe</Link>
-                <Link href={`/u/${user.username}`}>JohnDoe@gmail.com</Link>
+                <Link href={`/u/${user.username}`}>{user.username}</Link>
+                <Link href={`/u/${user.username}`}>{user.name}</Link>
+                <Link href={`/u/${user.username}`}>{user.email}</Link>
                 <button className="btn" onClick={logout}>
                   Logout
                 </button>
