@@ -1,6 +1,6 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-const URL = "/api/user";
+const URL = process.env.NEXT_PUBLIC_API_URL + "/api/user";
 const URL2 = "/api/notification";
 const URL3 = "/api/user";
 
