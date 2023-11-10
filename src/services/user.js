@@ -1,8 +1,7 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 const URL = process.env.NEXT_PUBLIC_API_URL + "/user";
-const URL2 = "/notification";
-const URL3 = "/user";
+const URL2 = process.env.NEXT_PUBLIC_API_URL + "/notification";
 
 export const sendOtpForSignup = (data) => {
   return axios.post(URL + "/send-otp", data);
@@ -14,6 +13,10 @@ export const signup = (data) => {
 
 export const login = (data) => {
   return axios.post(URL + "/login", data);
+};
+
+export const googleLogin = (data) => {
+  return axios.post(URL + "/google-login", data);
 };
 
 export const logout = () => {
@@ -50,10 +53,6 @@ export const updateUserBio = (data) => {
 
 export const updateUserSocialLinks = (data) => {
   return axios.post(URL + "/update-social", data);
-};
-
-export const googleLogin = (data) => {
-  return axios.post(URL3 + "/google-login", data);
 };
 
 export const sendNotification = (data) => {

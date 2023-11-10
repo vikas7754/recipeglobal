@@ -19,7 +19,7 @@ export const getUser = async (username) => {
 
 export const getLoggedInUser = async () => {
   try {
-    const res = await fetch(`${url}/loggedin-user`, {
+    const res = await fetch(`${url}/me`, {
       headers: { Cookie: cookies().toString() },
       withCredentials: true,
       credentials: "include",
