@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-const URL = process.env.NEXT_PUBLIC_API_URL + "/api/user";
-const URL2 = "/api/notification";
-const URL3 = "/api/user";
+const URL = process.env.NEXT_PUBLIC_API_URL + "/user";
+const URL2 = "/notification";
+const URL3 = "/user";
 
 export const sendOtpForSignup = (data) => {
   return axios.post(URL + "/send-otp", data);
