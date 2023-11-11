@@ -3,6 +3,10 @@ axios.defaults.withCredentials = true;
 const URL = process.env.NEXT_PUBLIC_API_URL + "/user";
 const URL2 = process.env.NEXT_PUBLIC_API_URL + "/notification";
 
+export const getLoginUser = () => {
+  return axios.get(URL + "/me");
+};
+
 export const sendOtpForSignup = (data) => {
   return axios.post(URL + "/send-otp", data);
 };
@@ -20,7 +24,7 @@ export const googleLogin = (data) => {
 };
 
 export const logout = () => {
-  return axios.post(URL + "/logout");
+  return axios.get(URL + "/logout");
 };
 
 export const forgotPasswordRequest = (email) => {

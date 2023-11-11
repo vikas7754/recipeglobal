@@ -4,8 +4,8 @@ import Footer from "./Footer";
 import useUser from "@/redux/hooks/useUser";
 import { useGoogleOneTapLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { toast } from "react-toastify";
-import { googleLogin } from "@/services/user";
-import { getLoggedInUser } from "@/actions/user";
+import { getLoginUser, googleLogin } from "@/services/user";
+// import { getLoggedInUser } from "@/actions/user";
 
 const LoginWithGoogleButton = () => {
   const { login } = useUser();
@@ -38,11 +38,11 @@ function Layout({ children }) {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      const getLoginUser = async () => {
-        const res = await getLoggedInUser();
-        if (res) login(res);
+      const getLoggedinUser = async () => {
+        const res = await getLoginUser();
+        if (res?.data?.username) login(res.data);
       };
-      getLoginUser();
+      getLoggedinUser();
     }
   }, []);
   return (
