@@ -1,4 +1,5 @@
 import useUser from "@/redux/hooks/useUser";
+import { rateRecipe } from "@/services/recipe";
 import styles from "@/styles/Buttons/Rating.module.scss";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -22,6 +23,11 @@ function Rating({ id, currentRating, isRated }) {
       return;
     }
     setRating(e.target.value);
+    try {
+      await rateRecipe({ recipeId: id, rating: e.target.value });
+    } catch (err) {
+      toast.error(err?.response?.data?.message || err?.message);
+    }
   };
 
   return (
@@ -121,7 +127,7 @@ function Rating({ id, currentRating, isRated }) {
           </svg>
         </label>
       </div>
-      {rating !== 0 && (
+      {rating && rating !== 0 && (
         <div className={styles.currentRating}>
           <span
             style={{

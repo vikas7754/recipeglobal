@@ -1,5 +1,6 @@
 import { getAllRecipes } from "@/actions/recipe";
 import Recipe from "@/components/Cards/Recipe";
+import RecipeSkeleton from "@/components/Skeleton/RecipeSkeleton";
 import styles from "@/styles/pages/home/Recipes.module.scss";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -14,7 +15,6 @@ function Recipes() {
     if (data.length >= total) return setHasMore(false);
     const res = await getAllRecipes(page);
     if (!res) return setHasMore(false);
-    console.log(res);
     setData([...data, ...res.recipes]);
     setTotal(res.total);
     setPage(page + 1);
@@ -31,12 +31,18 @@ function Recipes() {
         dataLength={data.length}
         next={fetchRecipes}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={<h4>End of recipes</h4>}
-        className={styles.recipes__grid}
+        loader={
+          <div className={styles.loader}>
+            <RecipeSkeleton />
+            <RecipeSkeleton />
+          </div>
+        }
+        endMessage={<h4 className="end-msg">End of recipes</h4>}
       >
-        {data.length > 0 &&
-          data.map((recipe, i) => <Recipe key={i} data={recipe} />)}
+        <div className={styles.recipes__grid}>
+          {data.length > 0 &&
+            data.map((recipe, i) => <Recipe key={i} data={recipe} />)}
+        </div>
       </InfiniteScroll>
     </div>
   );

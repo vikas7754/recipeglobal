@@ -1,7 +1,7 @@
 import AllRecipes from "@/components/UI/AllRecipes";
 
 function page() {
-  return <AllRecipes filterBy="category" filterValue="non-veg" />;
+  return <AllRecipes />;
 }
 
 export default page;

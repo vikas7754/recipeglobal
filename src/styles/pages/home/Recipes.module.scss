@@ -1,15 +1,22 @@
 .recipes {
+  width: 100%;
+}
+.recipes__grid {
+  width: 100%;
+  padding-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
   gap: 15px;
-  height: 100%;
   > div {
-    height: 100%;
+    width: 100%;
     max-width: 500px;
   }
 }
-.recipes__grid {
-  padding-top: 10px;
+.loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }

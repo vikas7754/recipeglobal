@@ -46,8 +46,8 @@ function Recipe({ data }) {
           width="100px"
           className={styles.img}
         />
-        {data.description.length > 300
-          ? data.description.substr(0, 300).concat("...")
+        {data.description.length > 350
+          ? data.description.substr(0, 350).concat("...")
           : data.description}
       </p>
       <Rating

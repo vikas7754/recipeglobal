@@ -1,7 +1,7 @@
-import React from "react";
+import AllRecipes from "@/components/UI/AllRecipes";
 
 function page() {
-  return <div>page</div>;
+  return <AllRecipes filterBy="category" filterValue="veg" />;
 }
 
 export default page;

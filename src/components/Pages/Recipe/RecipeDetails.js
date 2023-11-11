@@ -7,6 +7,7 @@ import Link from "next/link";
 import { elapsedTime } from "@/modules/elapsedTime";
 import { useState } from "react";
 import Related from "@/components/Related";
+import Rating from "@/components/Buttons/Rating";
 
 function RecipeDetails({ recipe }) {
   const [active, setActive] = useState(0);
@@ -33,6 +34,7 @@ function RecipeDetails({ recipe }) {
             <div>- {elapsedTime(recipe.createdAt)}</div>
           </div>
           <p>{recipe.description}</p>
+          <Rating currentRating={recipe?.rating} id={recipe._id} />
         </div>
         <div className={styles.img}>
           {recipe.video ? (
@@ -94,7 +96,7 @@ function RecipeDetails({ recipe }) {
           ))}
         </div>
       </div>
-      <Related />
+      <Related category={recipe.category} />
     </div>
   );
 }

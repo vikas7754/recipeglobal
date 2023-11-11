@@ -99,11 +99,14 @@
 }
 .photos {
   @extend .flex;
+  align-items: stretch;
   flex-wrap: wrap;
   > div {
     flex: 1 1 300px;
   }
   img {
+    height: 100%;
     border-radius: 15px;
+    object-fit: cover;
   }
 }

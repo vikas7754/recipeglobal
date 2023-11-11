@@ -10,3 +10,7 @@ export const uploadImages = async (data) => {
 export const addRecipe = async (data) => {
   return await axios.post(`${URL}/create`, data);
 };
+
+export const rateRecipe = async (data) => {
+  return await axios.post(`${URL}/rating`, data);
+};
