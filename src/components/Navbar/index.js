@@ -77,7 +77,13 @@ function Navbar() {
   return (
     <nav className={`${styles.container} ${isScrolled ? styles.sticky : ""}`}>
       <Link href="/" className={styles.logo}>
-        <Image src="/logo.png" width={40} height={40} alt="logo" />
+        <Image
+          src="/logo.png"
+          width={40}
+          height={40}
+          alt="logo"
+          priority={true}
+        />
         <span className="gradient">Recipe Global</span>
       </Link>
       <div className={styles.search}>

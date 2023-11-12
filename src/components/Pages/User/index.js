@@ -5,8 +5,11 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/pages/User/User.module.scss";
 import Layout from "@/components/Layout";
 import LogoLoader from "@/components/Skeleton/LogoLoader";
+import Link from "next/link";
+import useUser from "@/redux/hooks/useUser";
 
 function UserPage({ username }) {
+  const { user } = useUser();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -47,6 +50,16 @@ function UserPage({ username }) {
               <h2>{data.name}</h2>
               <h4>{data.username}</h4>
               <div>{data.totalRecipes}</div>
+              {user && user.username === username && (
+                <div>
+                  <Link href="/update-profile">Edit Profile</Link>
+                </div>
+              )}
+              <div>
+                <a href={`https://freecodez.com/u/${username}`} target="_blank">
+                  View on Freecodez
+                </a>
+              </div>
             </div>
           </div>
         </AllRecipes>

@@ -11,7 +11,7 @@ import {
   faCloudUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { use, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 function PublishRecipe() {
@@ -26,6 +26,7 @@ function PublishRecipe() {
   const [category, setCategory] = useState("veg");
   const [video, setVideo] = useState("");
   const [tags, setTags] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleIngredients = (values) => {
     setIngredients(values);
@@ -81,6 +82,7 @@ function PublishRecipe() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (!isLoggedIn) return toast.error("Please login to publish recipe");
     if (images.length === 0) {
       toast.error("Please select atleast one image");
@@ -105,6 +107,7 @@ function PublishRecipe() {
     }
     const imgUrls = [];
     try {
+      setIsSubmitting(true);
       const res = await uploadImages(formData);
       if (res?.data?.images) {
         res.data.images.forEach((img) => {
@@ -112,12 +115,14 @@ function PublishRecipe() {
         });
       }
     } catch (err) {
+      setIsSubmitting(false);
       toast.error(err?.response?.data?.message || err?.message);
       return;
     }
 
     if (imgUrls.length === 0) {
       toast.error("Something went wrong");
+      setIsSubmitting(false);
       return;
     }
 
@@ -131,6 +136,7 @@ function PublishRecipe() {
       if (id != null) {
         videoId = id;
       } else {
+        setIsSubmitting(false);
         toast.error("Invalid youtube video url!");
         return;
       }
@@ -165,7 +171,6 @@ function PublishRecipe() {
   return (
     <Layout>
       <div className={styles.container}>
-        <div></div>
         <form
           action=""
           onSubmit={() => {}}

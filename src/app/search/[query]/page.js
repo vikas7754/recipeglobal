@@ -1,3 +1,4 @@
+import Search from "@/components/Pages/Search";
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }) {
 }
 
 function page({ params }) {
-  return <div>page {params.query}</div>;
+  return <Search query={params.query} />;
 }
 
 export default page;

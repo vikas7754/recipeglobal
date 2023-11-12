@@ -37,7 +37,6 @@ function Related({ category }) {
             slidesPerView={3}
             navigation
             pagination={{ clickable: true }}
-            centeredSlides={true}
             breakpoints={{
               0: {
                 slidesPerView: 1,

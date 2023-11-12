@@ -1,12 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Inputs/DynamicInput.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Input from "./Input";
 
-function DynamicInput({ onChange, placeholder, limit }) {
+function DynamicInput({ onChange, placeholder, limit, data = [] }) {
   const [inputFields, setInputFields] = useState([{ value: "" }]);
+
+  useEffect(() => {
+    if (data.length !== 0) {
+      setInputFields(data.map((value) => ({ value })));
+    }
+  }, [data]);
 
   const handleAddFields = () => {
     const values = [...inputFields];

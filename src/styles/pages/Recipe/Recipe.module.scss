@@ -110,3 +110,11 @@
     object-fit: cover;
   }
 }
+.img {
+  border-radius: 15px;
+  max-height: 350px;
+  overflow: hidden;
+  img {
+    object-fit: contain;
+  }
+}

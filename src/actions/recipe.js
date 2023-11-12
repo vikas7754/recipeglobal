@@ -64,3 +64,18 @@ export const getUserData = async (username) => {
     throw err;
   }
 };
+
+export const searchRecipes = async (query, page) => {
+  try {
+    const res = await fetch(`${url}/search/${query}/?page=${page}`, {
+      headers: { Cookie: cookies().toString() },
+      withCredentials: true,
+      credentials: "include",
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch (err) {
+    throw err;
+  }
+};
