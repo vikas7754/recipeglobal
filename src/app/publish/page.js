@@ -1,5 +1,9 @@
 import PublishRecipe from "@/components/Pages/Publish";
-import React from "react";
+
+export const metadata = {
+  title: "RecipeGlobal - Publish Recipe",
+  description: "Publish Recipe on RecipeGlobal",
+};
 
 function page() {
   return <PublishRecipe />;

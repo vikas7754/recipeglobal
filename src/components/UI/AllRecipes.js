@@ -50,6 +50,7 @@ function AllRecipes({ filterBy, filterValue, children }) {
             </div>
           }
           endMessage={<h4 className="end-msg">End of recipes</h4>}
+          scrollThreshold={0.25}
         >
           <div className={styles.recipes__grid}>
             {data.length > 0 &&

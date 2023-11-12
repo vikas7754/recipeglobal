@@ -4,6 +4,7 @@ import AllRecipes from "@/components/UI/AllRecipes";
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/pages/User/User.module.scss";
 import Layout from "@/components/Layout";
+import LogoLoader from "@/components/Skeleton/LogoLoader";
 
 function UserPage({ username }) {
   const [data, setData] = useState();
@@ -24,10 +25,16 @@ function UserPage({ username }) {
   }, []);
   return (
     <>
-      {loading && <div className={styles.container}>Loading...</div>}
+      {loading && (
+        <div className={styles.container}>
+          <LogoLoader />
+        </div>
+      )}
       {error && (
         <Layout>
-          <div className={styles.container}>User not found</div>
+          <div className={styles.err}>
+            <h3>User not found</h3>
+          </div>
         </Layout>
       )}
       {data && (

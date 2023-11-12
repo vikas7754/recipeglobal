@@ -127,7 +127,7 @@ function Rating({ id, currentRating, isRated }) {
           </svg>
         </label>
       </div>
-      {rating && rating !== 0 && (
+      {rating !== 0 && (
         <div className={styles.currentRating}>
           <span
             style={{

@@ -8,7 +8,8 @@ import { ToastContainer } from "react-toastify";
 
 export const metadata = {
   title: "RecipeGlobal - Free Recipes",
-  description: "Free recipes from around the world",
+  description:
+    "Free recipes from around the world - Find your favorite recipes",
 };
 
 export default function RootLayout({ children }) {

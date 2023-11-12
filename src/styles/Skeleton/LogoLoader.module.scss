@@ -1,0 +1,75 @@
+.main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: black;
+  overflow: hidden;
+  svg {
+    transform: translateY(-20px);
+  }
+  text {
+    font-family: "Leckerli One", cursive;
+    font-size: 4.8rem;
+    stroke: #ff4800;
+    stroke-width: 2px;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    fill: transparent;
+    animation: dash 5s ease-out alternate infinite;
+  }
+}
+.container::before {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #ffffff;
+  box-shadow: 0 0 50px 30px #ffffff;
+  transform: skewX(30deg);
+  animation: sh02 2s 0s linear infinite;
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: -50%;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 0;
+    left: 150%;
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    fill: #ff4800;
+  }
+}
