@@ -40,6 +40,11 @@ function Footer() {
       </div>
       <hr />
       <div className={styles.bottom}>
+        <div>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
         <p>© 2023 Recipe Global</p>
       </div>
     </footer>
