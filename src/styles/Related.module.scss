@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  padding: 10px 0;
+}
+.card {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 5px;
+  a {
+    display: block;
+    width: fit-content;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 5px #000;
+    margin-bottom: 10px;
+  }
+}

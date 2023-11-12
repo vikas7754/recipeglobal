@@ -1,0 +1,115 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 4vw;
+    background: linear-gradient(to right, #30cfd0 0%, #9e5eec 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h1 {
+    font-size: 20vw;
+    font-family: sans-serif;
+    position: relative;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      -webkit-filter: blur(20px);
+      filter: blur(20px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: darken;
+      background-image: repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 1em,
+          #9e2053 1em,
+          orange 50%
+        ),
+        repeating-linear-gradient(
+          45deg,
+          #111626,
+          #111626 1em,
+          pink 1em,
+          #571b3d 50%
+        );
+      background-size: 3em 3em, 2em 2em;
+      animation-name: ani;
+      animation-duration: 8s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+  h1.light::before {
+    mix-blend-mode: screen;
+  }
+}
+.aside {
+  width: 40%;
+  border-left: 1px solid #fff;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+@media screen and (max-width: 900px) {
+  .btn a,
+  .btn button {
+    font-size: 14px;
+  }
+  .container p {
+    font-size: 5vw;
+  }
+  .container h1 {
+    font-size: 30vw;
+  }
+  .main {
+    flex-direction: column;
+  }
+  .aside {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    border-top: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > div {
+      max-width: 450px;
+    }
+  }
+}
+@keyframes ani {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400% 0;
+  }
+}
+.btn {
+  padding: 30px 0;
+  display: flex;
+  a,
+  button {
+    display: block;
+    margin: 5px;
+  }
+}
