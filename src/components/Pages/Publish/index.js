@@ -9,6 +9,7 @@ import {
   faCircle,
   faCircleCheck,
   faCloudUpload,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
@@ -343,7 +344,16 @@ function PublishRecipe() {
             </div>
             <div className={styles.btns}>
               <button onClick={handlePrevious}>Previous</button>
-              <button onClick={handleSubmit}>Publish</button>
+              {isSubmitting ? (
+                <button>
+                  Please Wait..{" "}
+                  <i>
+                    <FontAwesomeIcon icon={faSpinner} spin />
+                  </i>
+                </button>
+              ) : (
+                <button onClick={handleSubmit}>Publish</button>
+              )}
             </div>
           </fieldset>
         </form>
