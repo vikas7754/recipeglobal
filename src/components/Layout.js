@@ -47,6 +47,11 @@ function Layout({ children }) {
   }, []);
   return (
     <div className="container">
+      {showLogin && (
+        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GCID}>
+          <LoginWithGoogleButton />
+        </GoogleOAuthProvider>
+      )}
       <Navbar />
       <div className="wrapper">{children}</div>
       <Footer />
